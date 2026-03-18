@@ -36,23 +36,29 @@ static void wrong_pdf_test()
 	delete wrongMeta;
 }
 /*
-static void testCopyAndAssign()
+static void wrong_child()
 {
-	std::cout << "\n--- Copy/assignment test ---" << std::endl;
-	Dog d1;
-	Dog d2(d1);
-	Cat c1;
-	Cat c2;
+	std::cout << "\n--- wrong child test ---" << std::endl;
+	const Animal* wrong_father = new WrongCat();
 
-	c2 = c1;
-	d2.makeSound();
-	c2.makeSound();
+	std::cout << wrong_father->getType() << std::endl;
+	wrong_father->makeSound();
+}*/
+/*
+static void wrong_cast_child()
+{
+	std::cout << "\n--- wrong cast child test ---" << std::endl;
+	const Animal* wrong_father = (const Animal*) new WrongCat();
+
+	std::cout << wrong_father->getType() << std::endl;
+	wrong_father->makeSound();
 }*/
 
 int main()
 {
 	main_pdf();
 	wrong_pdf_test();
-	//testCopyAndAssign();
+	//wrong_child();        erreur a la compilation, on ne peut pas convertir un WrongCat* en Animal*
+	//wrong_cast_child();   compilation ok, mais comportement indéfini
 	return 0;
 }
